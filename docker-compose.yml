@@ -29,7 +29,7 @@ services:
     container_name: db
     platform: linux/x86_64
     ports:
-      - 3002:3002
+      - 3002:27017
     environment:
       - MONGO_ROOT_USERNAME=root
       - MONGO_ROOT_PASSWORD=password
