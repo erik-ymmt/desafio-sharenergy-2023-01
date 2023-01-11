@@ -1,3 +1,3 @@
-const users = require('./users');
+const clients = require('./clientsRouter');
 
-module.exports = { users };
+module.exports = { clients };

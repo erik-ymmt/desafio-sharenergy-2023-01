@@ -19,4 +19,4 @@ const create = async (username, password) => {
   );
 };
 
-module.exports = { find, create };
+module.exports = { User, find, create };
