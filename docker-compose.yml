@@ -6,7 +6,6 @@ services:
     build: ./frontend
     ports:
       - 3000:5173
-      - 5173:5173
     working_dir: /frontend
     volumes:
       - ./frontend/src:/frontend/src
@@ -30,9 +29,9 @@ services:
     container_name: db
     platform: linux/x86_64
     ports:
-      - 3002:3306
+      - 3002:3002
     environment:
-      - MONGO_DATABSE=users
       - MONGO_ROOT_USERNAME=root
       - MONGO_ROOT_PASSWORD=password
+      - MONGO_DATABASE=users
     restart: 'always'
