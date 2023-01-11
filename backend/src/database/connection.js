@@ -1,9 +1,9 @@
-const { connect } = require('mongoose');
+const { connect, set } = require('mongoose');
+require('dotenv').config();
 
-const options = {
-  user: process.env.MONGO_DATABASE,
-  pass: process.env.MONGO_ROOT_PASSWORD,
-  dbName: process.env.MONGO_DATABASE,
-};
+set('strictQuery', false);
+const connectDb = (url = process.env.MONGO_URI) => connect(url)
+  .then(() => console.log('MongoDb connection ok!'))
+  .catch((e) => console.log('connection error >>', e));
 
-connect('mongodb://localhost:3002', options);
+module.exports = { connectDb };

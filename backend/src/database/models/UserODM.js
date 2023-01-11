@@ -8,9 +8,15 @@ const schema = new Schema({
 
 const User = model('User', schema);
 
-User.create(
-  { username: 'desafiosharenergy', password: 'sh@r3n3rgy' },
-  (err) => {
-    if (err) console.log(err);
-  },
-);
+const find = async () => User.find({});
+
+const create = async (username, password) => {
+  User.create(
+    { username, password },
+    (err) => {
+      if (err) console.log(err);
+    },
+  );
+};
+
+module.exports = { find, create };
