@@ -1,9 +1,8 @@
-// placeholder
 const { User } = require('../database/models/UserODM');
 
-const find = async () => {
-  const result = await User.find();
+const findOne = async (username) => {
+  const result = await User.findOne({ username });
   return result;
 };
 
-module.exports = { find };
+module.exports = { findOne };

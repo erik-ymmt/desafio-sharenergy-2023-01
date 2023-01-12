@@ -1,3 +1,4 @@
-const clients = require('./usersService');
+const users = require('./usersService');
+const clients = require('./clientsService');
 
-module.exports = { clients };
+module.exports = { clients, users };

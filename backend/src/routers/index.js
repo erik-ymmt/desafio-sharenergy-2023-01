@@ -1,3 +1,4 @@
 const clients = require('./clientsRouter');
+const users = require('./usersRouter');
 
-module.exports = { clients };
+module.exports = { clients, users };
