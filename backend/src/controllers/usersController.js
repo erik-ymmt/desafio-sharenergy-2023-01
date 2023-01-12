@@ -6,6 +6,7 @@ const findOne = async (req, res) => {
   const userData = await service.users.findOne(username);
   const dbPassword = userData.password;
   const message = validateLogin(password, dbPassword);
+
   res.status(200).json(message);
 };
 
