@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function ClientsList(): JSX.Element {
   return (
-    <div>ClientsList</div>
+    <>
+      <Header />
+      <div>ClientsList</div>
+    </>
   );
 }
 

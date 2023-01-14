@@ -7,7 +7,8 @@
         "plugin:react/recommended",
         "standard-with-typescript",
         "airbnb-typescript",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "plugin:css-modules/recommended"
     ],
     "overrides": [
     ],
@@ -19,7 +20,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "css-modules"
     ],
     "ignorePatterns": [".eslintrc.json", "vite.config.ts"],
     "rules": {

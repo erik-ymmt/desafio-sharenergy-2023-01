@@ -5,4 +5,4 @@ RUN ["npm", "install"]
 COPY . .
 EXPOSE 5173
 ENTRYPOINT ["npm"]
-CMD ["start"]
+CMD ["run", "dev"]

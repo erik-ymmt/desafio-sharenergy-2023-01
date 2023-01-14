@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function Users(): JSX.Element {
   return (
-    <div>Users</div>
+    <>
+      <Header />
+      <div>Users</div>
+    </>
   );
 }
 

@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function HttpCat(): JSX.Element {
   return (
-    <div>HttpCat</div>
+    <>
+      <Header />
+      <div>HttpCat</div>
+    </>
   );
 }
 

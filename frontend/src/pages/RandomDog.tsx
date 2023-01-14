@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function RandomDog(): JSX.Element {
   return (
-    <div>RandomDog</div>
+    <>
+      <Header />
+      <div>RandomDog</div>
+    </>
   );
 }
 
