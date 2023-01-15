@@ -30,6 +30,14 @@
           {
             "checksVoidReturn": false
           }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "variable",
+            "modifiers": ["destructured"],
+            "format": null
+          }
         ]
       }
 }
