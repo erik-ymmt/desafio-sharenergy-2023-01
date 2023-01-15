@@ -13,9 +13,6 @@ const find = async () => User.find({});
 const create = async (username, password) => {
   User.create(
     { username, password },
-    (err) => {
-      if (err) console.log(err);
-    },
   );
 };
 

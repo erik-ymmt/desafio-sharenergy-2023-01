@@ -14,7 +14,6 @@ const find = async (req, res) => {
 const updateOne = async (req, res) => {
   const { id } = req.params;
   const client = req.body;
-  console.log('>>>>>', id);
   const result = await service.clients.updateOne(id, client);
   res.status(201).json(result);
 };
