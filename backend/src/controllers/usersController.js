@@ -12,7 +12,7 @@ const login = async (req, res) => {
 
     res.status(200).json({ ...message, token });
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(401).json({ message: 'Unauthorized: Invalid credentials.' });
   }
 };
 
