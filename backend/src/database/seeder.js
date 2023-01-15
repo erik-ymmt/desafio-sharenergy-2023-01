@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const Users = require('./models/UserODM');
-const Client = require('./models/ClientODM');
+const { Client } = require('./models/ClientODM');
 
 const seedDb = async () => {
   const users = await Users.find();
@@ -11,14 +11,14 @@ const seedDb = async () => {
     })
   ));
 
-  const clients = await Client.find();
+  const clients = await Client.find({});
   if (clients.length === 0) {
     await Client.create({
       name: 'Beatriz Silva',
       email: 'bia@email.com',
       phoneNumber: '99998888',
       address: 'rua da padaria, 100',
-      cpf: '0.123.012.301-2',
+      cpf: '123.012.301-23',
     });
   }
 };

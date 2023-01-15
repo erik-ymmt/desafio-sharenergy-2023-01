@@ -11,20 +11,4 @@ const schema = new Schema({
 
 const Client = model('Client', schema);
 
-const find = async () => Client.find({});
-
-const create = async (client) => {
-  const {
-    name, email, phoneNumber, address, cpf,
-  } = client;
-  Client.create(
-    {
-      name, email, phoneNumber, address, cpf,
-    },
-    (err) => {
-      if (err) console.log(err);
-    },
-  );
-};
-
-module.exports = { Client, find, create };
+module.exports = { Client };
