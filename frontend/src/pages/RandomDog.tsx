@@ -10,7 +10,6 @@ function RandomDog(): JSX.Element {
     const response = await fetch('https://random.dog/woof?include=jpeg');
     const result = await response.text();
     setDogImg(result);
-    console.log(result);
   };
 
   useEffect(() => {
