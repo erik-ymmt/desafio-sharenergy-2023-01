@@ -1,4 +1,4 @@
-import React, { Key, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import UserCard, { IUser } from '../components/UserCard';
@@ -86,7 +86,7 @@ function Users(): JSX.Element {
         <div>
           <div>
             {users.map((user: IUser) => (
-              <UserCard key={user.login.uuid as Key} user={user} />
+              <UserCard key={user.login.uuid} user={user} />
             ))}
           </div>
           <div>
