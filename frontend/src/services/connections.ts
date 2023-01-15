@@ -1,10 +1,13 @@
+import { ILoginInputs } from '../pages/Login';
+
 interface ILoginResponse {
   authorized: boolean
   message: string
   token: string
 }
 
-const login = async (): Promise<ILoginResponse> => {
+const login = async (loginInputs: ILoginInputs): Promise<ILoginResponse> => {
+  const { username, password } = loginInputs;
   const url = 'http://localhost:3001/users';
   const options = {
     method: 'POST',
@@ -13,8 +16,10 @@ const login = async (): Promise<ILoginResponse> => {
       'Content-Type': 'application/json;charset=UTF-8',
     },
     body: JSON.stringify({
-      username: 'desafiosharenergy',
-      password: 'sh@r3n3rgy',
+      username,
+      password,
+      // username: 'desafiosharenergy',
+      // password: 'sh@r3n3rgy',
     }),
   };
   const respose = await fetch(url, options);

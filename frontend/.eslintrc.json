@@ -25,5 +25,11 @@
     ],
     "ignorePatterns": [".eslintrc.json", "vite.config.ts"],
     "rules": {
-    }
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          {
+            "checksVoidReturn": false
+          }
+        ]
+      }
 }
