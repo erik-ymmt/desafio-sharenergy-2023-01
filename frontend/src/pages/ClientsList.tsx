@@ -9,10 +9,11 @@ function ClientsList(): JSX.Element {
     const loggedIn = localStorage.getItem('se_rememberme');
     if (loggedIn !== 'true') navigate('/');
   }, []);
+
   return (
     <>
       <Header />
-      <div>ClientsList</div>
+      <h2>ClientsList</h2>
     </>
   );
 }

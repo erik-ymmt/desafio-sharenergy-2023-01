@@ -15,7 +15,7 @@ function HttpCat(): JSX.Element {
   return (
     <>
       <Header />
-      <div>HttpCat</div>
+      <h2>HttpCat</h2>
       <form>
         <input
           type="text"

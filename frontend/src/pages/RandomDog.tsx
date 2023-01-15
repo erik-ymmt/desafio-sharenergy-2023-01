@@ -21,7 +21,7 @@ function RandomDog(): JSX.Element {
   return (
     <>
       <Header />
-      <div>RandomDog</div>
+      <h2>RandomDog</h2>
       <button onClick={getRandomDog}>New Dog</button>
       <img src={`https://random.dog/${dogImg}`} alt="" />
     </>
