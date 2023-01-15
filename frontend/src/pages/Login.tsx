@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import login from '../services/connections';
+import { login } from '../services/dataBaseConnections';
 import styles from '../styles/login.module.css';
 import { useNavigate } from 'react-router-dom';
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ClientCard from '../components/ClientCard';
 import Header from '../components/Header';
+import NewClientForm from '../components/NewClientForm';
 
 export interface IClient {
   _id: string
@@ -16,16 +17,13 @@ function ClientsList(): JSX.Element {
   const navigate = useNavigate();
   const [clientsList, setClientsList] = useState([]);
   const [searchBarText, setSearchBarText] = useState('');
+  const [searchFor, setSearchFor] = useState('');
   const [newClientFormEnabled, setNewClientFormEnabled] = useState(false);
 
   const getClients = async (): Promise<void> => {
     const response = await fetch('http://localhost:3001/clients');
     const result = await response.json();
     setClientsList(result);
-  };
-
-  const createNewClient = async (): Promise<void> => {
-
   };
 
   useEffect(() => {
@@ -40,35 +38,44 @@ function ClientsList(): JSX.Element {
       <Header />
       <h2>ClientsList</h2>
 
-      <form className={`newClient_${newClientFormEnabled.toString()}`}>
-        <label htmlFor='name'>Name:</label>
-        <input type='text' id='name' name='name' />
-        <label htmlFor='email'>Email:</label>
-        <input type='text' id='email' name='email' />
-        <label htmlFor='phoneNumber'>Phone:</label>
-        <input type='text' id='phoneNumber' name='phoneNumber' />
-        <label htmlFor='cpf'>CPF:</label>
-        <input type='text' id='cpf' name='cpf' />
-        <button onClick={createNewClient}>Create client</button>
-      </form>
+      <NewClientForm
+        newClientFormEnabled={newClientFormEnabled}
+        setNewClientFormEnabled={setNewClientFormEnabled}
+        getClients={getClients}
+      />
 
       <form>
         <input
           type='text'
-          placeholder='Search for a name'
+          placeholder='Search for name, email, phone, address or cpf'
           onChange={({ target: { value } }) => { setSearchBarText(value); }}
         />
-        <button onClick={(e) => { e.preventDefault(); }}>
+        <button onClick={(e) => { e.preventDefault(); setSearchFor(searchBarText); }}>
           Search
+        </button>
+        <button onClick={(e) => { e.preventDefault(); setSearchFor(''); }}>
+          Show all clients
         </button>
         <button onClick={(e) => { e.preventDefault(); setNewClientFormEnabled(true); }}>
           Add new client +
         </button>
       </form>
       <div>
-        {clientsList.map((client: IClient) => (
-          <ClientCard key={client._id} clientData={client} />
-        ))}
+        {
+          (
+            clientsList
+              .filter((client: IClient) => (
+                client.name.toLowerCase().includes(searchFor.toLowerCase()) ||
+                client.email.toLowerCase().includes(searchFor.toLowerCase()) ||
+                client.phoneNumber.toLowerCase().includes(searchFor.toLowerCase()) ||
+                client.address.toLowerCase().includes(searchFor.toLowerCase()) ||
+                client.cpf.toLowerCase().includes(searchFor.toLowerCase())
+              ))
+              .map((client: IClient) => (
+                          <ClientCard key={client._id} clientData={client} />
+              ))
+          )
+        }
       </div>
     </>
   );
