@@ -24,7 +24,6 @@ const login = async (loginInputs: ILoginInputs): Promise<ILoginResponse> => {
   };
   const respose = await fetch(url, options);
   const result = await respose.json();
-  console.log(result);
   return result;
 };
 

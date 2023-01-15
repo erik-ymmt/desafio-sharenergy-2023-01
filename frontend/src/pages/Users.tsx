@@ -63,8 +63,6 @@ function Users(): JSX.Element {
       user.name.first.toLowerCase().includes(searchedTerm.toLowerCase()) ||
       user.name.last.toLowerCase().includes(searchedTerm.toLowerCase())
     ));
-    console.log(result);
-    console.log(searchResults);
     setUsers(searchResults.splice(0, 3));
   };
 
