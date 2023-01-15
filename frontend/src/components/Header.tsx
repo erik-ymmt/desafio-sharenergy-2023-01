@@ -1,8 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Header(): JSX.Element {
-  console.log('teste header');
+  const navigate = useNavigate();
+  const logout = (): void => {
+    localStorage.removeItem('se_token');
+    localStorage.removeItem('se_rememberme');
+    navigate('/');
+  };
+
   return (
     <header>
       <div>
@@ -10,6 +16,7 @@ function Header(): JSX.Element {
         <Link to='/cats'>HTTP Cats</Link>
         <Link to='/dogs'>Random Dog</Link>
         <Link to='/clients'>Clients List</Link>
+        <span onClick={logout}>Logout</span>
       </div>
     </header>
   );

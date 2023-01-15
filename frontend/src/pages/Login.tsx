@@ -31,7 +31,7 @@ function Login(): JSX.Element {
   };
 
   const loginAuthorization = (token: string): void => {
-    localStorage.setItem('token', token);
+    localStorage.setItem('se_token', token);
     if (rememberMe) {
       localStorage.setItem('se_rememberme', 'true');
     }
