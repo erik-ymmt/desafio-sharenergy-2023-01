@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { login } from '../services/dataBaseConnections';
-import styles from '../styles/login.module.css';
 import { useNavigate } from 'react-router-dom';
 
 export interface ILoginInputs {
@@ -47,7 +46,7 @@ function Login(): JSX.Element {
 
   return (
     <div>
-      <div className={styles.login_box}>
+      <div className='login_box'>
         <form className='login_form'>
           <input type="text" name='username' />
           <input type="password" name='password'/>

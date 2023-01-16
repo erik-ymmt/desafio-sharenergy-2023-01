@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import RandomDog from './pages/RandomDog';
 import Users from './pages/Users';
 
+import './styles/global.css';
+
 function App(): JSX.Element {
   return (
     <div className="App">
