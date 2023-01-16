@@ -28,7 +28,7 @@ const login = async (loginInputs: ILoginInputs): Promise<ILoginResponse> => {
   return result;
 };
 
-const createClient = async (newClient: IClient): Promise<IClient> => {
+const createClient = async (newClient: IClient): Promise<void> => {
   const { name, email, phoneNumber, address, cpf } = newClient;
   const url = 'http://localhost:3001/clients';
   const options = {
@@ -39,9 +39,22 @@ const createClient = async (newClient: IClient): Promise<IClient> => {
     },
     body: JSON.stringify({ name, email, phoneNumber, address, cpf }),
   };
-  const response = await fetch(url, options);
-  const result = await response.json();
-  return result;
+  await fetch(url, options);
 };
 
-export { login, createClient };
+const updateClient = async (newClient: IClient): Promise<void> => {
+  const { _id, name, email, phoneNumber, address, cpf } = newClient;
+  console.log(newClient);
+  const url = `http://localhost:3001/clients/${_id}`;
+  const options = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+    body: JSON.stringify({ name, email, phoneNumber, address, cpf }),
+  };
+  await fetch(url, options);
+};
+
+export { login, createClient, updateClient };

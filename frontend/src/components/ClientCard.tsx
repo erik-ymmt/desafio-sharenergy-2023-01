@@ -3,16 +3,19 @@ import { IClient } from '../pages/ClientsList';
 
 interface IClientCardProps {
   clientData: IClient
+  setEditClientFormEnabled: Function
+  setClientIdToEdit: Function
 }
 
-function ClientCard({ clientData }: IClientCardProps): JSX.Element {
-  const editClient = (id: string): void => {
-    console.log(id);
-  };
+function ClientCard({
+  clientData, setEditClientFormEnabled, setClientIdToEdit,
+}: IClientCardProps): JSX.Element {
   const deleteClient = (id: string): void => {
     console.log(id);
   };
+
   const { _id, name, email, phoneNumber, address, cpf } = clientData;
+
   return (
     <div>
       <div>
@@ -23,7 +26,9 @@ function ClientCard({ clientData }: IClientCardProps): JSX.Element {
         <p>CPF: {cpf}</p>
       </div>
       <div>
-        <button onClick={() => { editClient(_id); }}>edit</button>
+        <button onClick={() => { setEditClientFormEnabled(true); setClientIdToEdit(_id); }}>
+          edit
+        </button>
         <button onClick={() => { deleteClient(_id); }}>delete</button>
       </div>
     </div>

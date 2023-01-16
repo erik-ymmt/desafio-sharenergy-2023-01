@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ClientCard from '../components/ClientCard';
+import EditClientForm from '../components/EditClientForm';
 import Header from '../components/Header';
 import NewClientForm from '../components/NewClientForm';
 
@@ -19,6 +20,8 @@ function ClientsList(): JSX.Element {
   const [searchBarText, setSearchBarText] = useState('');
   const [searchFor, setSearchFor] = useState('');
   const [newClientFormEnabled, setNewClientFormEnabled] = useState(false);
+  const [editClientFormEnabled, setEditClientFormEnabled] = useState(false);
+  const [clientIdToEdit, setClientIdToEdit] = useState('');
 
   const getClients = async (): Promise<void> => {
     const response = await fetch('http://localhost:3001/clients');
@@ -38,12 +41,19 @@ function ClientsList(): JSX.Element {
       <Header />
       <h2>ClientsList</h2>
 
+      <EditClientForm
+        editClientFormEnabled={editClientFormEnabled}
+        setEditClientFormEnabled={setEditClientFormEnabled}
+        getClients={getClients}
+        clientsList={clientsList}
+        clientIdToEdit={clientIdToEdit}
+      />
+
       <NewClientForm
         newClientFormEnabled={newClientFormEnabled}
         setNewClientFormEnabled={setNewClientFormEnabled}
         getClients={getClients}
       />
-
       <form>
         <input
           type='text'
@@ -72,7 +82,12 @@ function ClientsList(): JSX.Element {
                 client.cpf.toLowerCase().includes(searchFor.toLowerCase())
               ))
               .map((client: IClient) => (
-                          <ClientCard key={client._id} clientData={client} />
+                  <ClientCard
+                    key={client._id}
+                    clientData={client}
+                    setEditClientFormEnabled={setEditClientFormEnabled}
+                    setClientIdToEdit={setClientIdToEdit}
+                  />
               ))
           )
         }
