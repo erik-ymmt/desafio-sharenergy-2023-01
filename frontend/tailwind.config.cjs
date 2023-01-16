@@ -1,11 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: [    
+    './src/**/*.tsx',
+    './index.html'
+  ],
   theme: {
-    colors: {
-      'se_green': '#00A2A2',
+    extend: {
+      colors: {
+        'se_green': '#00A2A2',
+      },
+      backgroundImage: {
+        'solar1': "url('/src/assets/pexels-solar-panels-1.jpg')",
+        'solar2': "url('/src/assets/pexels-solar-panels-2.jpg')",
+        'solar3': "url('/src/assets/pexels-solar-panels-3.jpg')",
+      },
+      fontFamily: {
+        'sans': ['Roboto', "Segoe UI", "Helvetica Neue", "Arial", "Noto Sans", 'sans-serif'],
+      },
+      animation: {
+        'slide-up': 'slide-up 0.5s ease-in-out',
+      },
+      keyframes: {
+        'slide-up': {
+          '100%': { transform: 'translatey(-10px)' },
+        }
+      }
     },
-    extend: {},
   },
   plugins: [],
 }
