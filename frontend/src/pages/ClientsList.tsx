@@ -4,6 +4,7 @@ import ClientCard from '../components/ClientCard';
 import EditClientForm from '../components/EditClientForm';
 import Header from '../components/Header';
 import NewClientForm from '../components/NewClientForm';
+import { deleteClient } from '../services/dataBaseConnections';
 
 export interface IClient {
   _id: string
@@ -21,6 +22,7 @@ function ClientsList(): JSX.Element {
   const [searchFor, setSearchFor] = useState('');
   const [newClientFormEnabled, setNewClientFormEnabled] = useState(false);
   const [editClientFormEnabled, setEditClientFormEnabled] = useState(false);
+  const [deleteClientEnabled, setDeleteClientEnabled] = useState(false);
   const [clientIdToEdit, setClientIdToEdit] = useState('');
 
   const getClients = async (): Promise<void> => {
@@ -35,6 +37,11 @@ function ClientsList(): JSX.Element {
 
     void getClients();
   }, []);
+
+  const deleteClientPopUp = async (): Promise<void> => {
+    await deleteClient(clientIdToEdit);
+    void getClients();
+  };
 
   return (
     <>
@@ -54,6 +61,13 @@ function ClientsList(): JSX.Element {
         setNewClientFormEnabled={setNewClientFormEnabled}
         getClients={getClients}
       />
+
+      <div className={`deleteClientPopUp_${deleteClientEnabled.toString()}`}>
+        <h3>Confirm that you want to delete</h3>
+        <button onClick={deleteClientPopUp}>Confirm</button>
+        <button onClick={() => { setDeleteClientEnabled(false); }}>Go back</button>
+      </div>
+
       <form>
         <input
           type='text'
@@ -87,6 +101,7 @@ function ClientsList(): JSX.Element {
                     clientData={client}
                     setEditClientFormEnabled={setEditClientFormEnabled}
                     setClientIdToEdit={setClientIdToEdit}
+                    setDeleteClientEnabled={setDeleteClientEnabled}
                   />
               ))
           )

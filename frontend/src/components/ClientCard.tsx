@@ -5,15 +5,12 @@ interface IClientCardProps {
   clientData: IClient
   setEditClientFormEnabled: Function
   setClientIdToEdit: Function
+  setDeleteClientEnabled: Function
 }
 
 function ClientCard({
-  clientData, setEditClientFormEnabled, setClientIdToEdit,
+  clientData, setEditClientFormEnabled, setClientIdToEdit, setDeleteClientEnabled,
 }: IClientCardProps): JSX.Element {
-  const deleteClient = (id: string): void => {
-    console.log(id);
-  };
-
   const { _id, name, email, phoneNumber, address, cpf } = clientData;
 
   return (
@@ -29,7 +26,7 @@ function ClientCard({
         <button onClick={() => { setEditClientFormEnabled(true); setClientIdToEdit(_id); }}>
           edit
         </button>
-        <button onClick={() => { deleteClient(_id); }}>delete</button>
+        <button onClick={() => { setDeleteClientEnabled(true); setClientIdToEdit(_id); }}>delete</button>
       </div>
     </div>
   );

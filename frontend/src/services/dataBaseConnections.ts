@@ -44,7 +44,6 @@ const createClient = async (newClient: IClient): Promise<void> => {
 
 const updateClient = async (newClient: IClient): Promise<void> => {
   const { _id, name, email, phoneNumber, address, cpf } = newClient;
-  console.log(newClient);
   const url = `http://localhost:3001/clients/${_id}`;
   const options = {
     method: 'PUT',
@@ -57,4 +56,16 @@ const updateClient = async (newClient: IClient): Promise<void> => {
   await fetch(url, options);
 };
 
-export { login, createClient, updateClient };
+const deleteClient = async (id: string): Promise<void> => {
+  const url = `http://localhost:3001/clients/${id}`;
+  const options = {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  };
+  await fetch(url, options);
+};
+
+export { login, createClient, updateClient, deleteClient };
