@@ -28,7 +28,7 @@ function UserCard({ user }: IUserCardProps): JSX.Element {
   return (
     <div className='flex items-center gap-4 mb-6'>
       <img
-      className='rounded-full'
+      className='rounded-full max-md:w-24'
         src={user.picture.large}
         alt={user.name.first + user.name.last}
       />

@@ -52,9 +52,9 @@ function ClientsList(): JSX.Element {
         <h2 className='mt-8 mb-4 text-2xl font-semibold text-se_green'>
           ClientsList
         </h2>
-        <div className={`${editClientFormEnabled ? '' : 'hidden'}`}>
+
+        <div className={`${editClientFormEnabled ? '' : 'hidden'}  absolute top-0 h-screen w-screen bg-gray-900/50 flex justify-center items-center`}>
           <EditClientForm
-            editClientFormEnabled={editClientFormEnabled}
             setEditClientFormEnabled={setEditClientFormEnabled}
             getClients={getClients}
             clientsList={clientsList}
@@ -69,10 +69,22 @@ function ClientsList(): JSX.Element {
           />
         </div>
 
-        <div className={`${deleteClientEnabled ? '' : 'hidden'}`}>
-          <h3>Confirm that you want to delete</h3>
-          <button onClick={deleteClientPopUp}>Confirm</button>
-          <button onClick={() => { setDeleteClientEnabled(false); }}>Go back</button>
+        <div className={`${deleteClientEnabled ? '' : 'hidden'} absolute top-0 h-screen w-screen bg-gray-900/50 flex justify-center items-center`}>
+          <div className='flex flex-col justify-center items-center bg-se_bg w-1/5 rounded-lg p-4 gap-2'>
+            <h3>Are you sure?</h3>
+            <button
+              className='bg-red-700 py-1 px-3 w-1/2 h-10 flex justify-center items-center rounded-lg text-white hover:bg-red-900'
+              onClick={deleteClientPopUp}
+            >
+              Yes, delete
+            </button>
+            <button
+              className='bg-gray-500 py-1 px-3 w-1/2 h-10 flex justify-center items-center rounded-lg text-white hover:bg-gray-700'
+              onClick={() => { setDeleteClientEnabled(false); }}
+            >
+              No, go back
+            </button>
+          </div>
         </div>
 
         <form className='flex gap-2 mb-8'>
@@ -80,6 +92,7 @@ function ClientsList(): JSX.Element {
             className='rounded-lg border-se_green border-2 px-4 w-96'
             type='text'
             placeholder='Search for name, email, phone, address or cpf'
+            value={searchBarText}
             onChange={({ target: { value } }) => { setSearchBarText(value); }}
           />
           <button
@@ -90,9 +103,9 @@ function ClientsList(): JSX.Element {
           </button>
           <button
             className='bg-se_green py-1 px-2 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
-            onClick={(e) => { e.preventDefault(); setSearchFor(''); }}
+            onClick={(e) => { e.preventDefault(); setSearchFor(''); setSearchBarText(''); }}
           >
-            Show all clients
+            Clear Search
           </button>
           <button
             className='bg-se_green py-1 px-2 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'

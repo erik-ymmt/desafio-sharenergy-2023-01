@@ -3,7 +3,6 @@ import { IClient } from '../pages/ClientsList';
 import { updateClient } from '../services/dataBaseConnections';
 
 interface IEditClientForm {
-  editClientFormEnabled: boolean
   setEditClientFormEnabled: Function
   getClients: Function
   clientsList: IClient[]
@@ -11,7 +10,7 @@ interface IEditClientForm {
 }
 
 function EditClientForm({
-  editClientFormEnabled, setEditClientFormEnabled, getClients, clientsList, clientIdToEdit,
+  setEditClientFormEnabled, getClients, clientsList, clientIdToEdit,
 }: IEditClientForm): JSX.Element {
   useEffect(() => {
 
@@ -34,7 +33,7 @@ function EditClientForm({
   }
 
   const editClient = async (): Promise<void> => {
-    const clientForm = document.querySelector('.newClient_true') as HTMLFormElement;
+    const clientForm = document.querySelector('.editClient_true') as HTMLFormElement;
     const formData = new FormData(clientForm);
     const client = {
       _id: clientIdToEdit,
@@ -49,24 +48,39 @@ function EditClientForm({
   };
 
   return (
-    <form className={`newClient_${editClientFormEnabled.toString()}`}>
-    <label htmlFor='name'>Name:</label>
-      <input type='text' id='name' name='name' />
-    <label htmlFor='email'>Email:</label>
-      <input type='text' id='email' name='email' />
-    <label htmlFor='phoneNumber'>Phone:</label>
-      <input type='text' id='phoneNumber' name='phoneNumber' />
-    <label htmlFor='address'>Address:</label>
-      <input type='text' id='address' name='address' />
-    <label htmlFor='cpf'>CPF:</label>
-      <input type='text' id='cpf' name='cpf' />
-    <button onClick={(e) => { e.preventDefault(); void editClient(); }}>
-      Edit client
-    </button>
-    <button onClick={(e) => { e.preventDefault(); setEditClientFormEnabled(false); }}>
-      Go back
-    </button>
-  </form>
+    <div className='flex justify-center bg-se_bg w-1/3 rounded-lg'>
+      <form className='editClient_true flex flex-col p-8 gap-4 w-10/12'>
+        <label htmlFor='name'> Name:
+          <input type='text' id='name' name='name' className='border-se_green border-2 w-full rounded-md py-1 px-2' />
+        </label>
+        <label htmlFor='email'> Email:
+          <input type='text' id='email' name='email' className='border-se_green border-2 w-full rounded-md py-1 px-2' />
+        </label>
+        <label htmlFor='phoneNumber'> Phone:
+          <input type='text' id='phoneNumber' name='phoneNumber' className='border-se_green border-2 w-full rounded-md py-1 px-2' />
+        </label>
+        <label htmlFor='address'> Address:
+          <input type='text' id='address' name='address' className='border-se_green border-2 w-full rounded-md py-1 px-2' />
+        </label>
+        <label htmlFor='cpf'> CPF:
+          <input type='text' id='cpf' name='cpf' className='border-se_green border-2 w-full rounded-md py-1 px-2' />
+        </label>
+        <div className='flex justify-between'>
+          <button
+            className='bg-gray-500 py-1 px-3 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-gray-700'
+            onClick={(e) => { e.preventDefault(); setEditClientFormEnabled(false); }}
+          >
+            Go back
+          </button>
+          <button
+            className='bg-se_green py-1 px-3 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
+            onClick={(e) => { e.preventDefault(); void editClient(); setEditClientFormEnabled(false); }}
+          >
+            Edit client
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

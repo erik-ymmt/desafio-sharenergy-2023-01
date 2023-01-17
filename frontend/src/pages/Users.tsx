@@ -77,7 +77,7 @@ function Users(): JSX.Element {
         </h2>
         <form className='flex gap-4 mb-8'>
           <input
-            className='rounded-lg border-se_green border-2 px-4 w-96'
+            className='rounded-lg border-se_green border-2 px-4 w-96 max-lg:w-full'
             type='text'
             placeholder='Search name, username or email'
             onChange={({ target: { value } }) => { setSearchTerm(value); }}

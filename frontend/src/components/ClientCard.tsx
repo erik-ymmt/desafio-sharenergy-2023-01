@@ -18,7 +18,7 @@ function ClientCard({
 
   return (
     <div className='border-gray-200 border-2 py-4 px-6 w-1/3'>
-      <div className='mb-4 text-lg text-gray-400'>
+      <div className='mb-4 text-base text-gray-400'>
         <p> Name:
           <span className='text-black'>{name}</span>
         </p>
@@ -35,16 +35,16 @@ function ClientCard({
           <span className='text-black'>{cpf}</span>
         </p>
       </div>
-      <div className='flex gap-2'>
+      <div className='flex gap-2 justify-end'>
         <button
-          className='bg-se_green py-1 px-2 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
+          className='bg-se_green py-1 px-5 h-8 flex items-center rounded-lg text-white hover:bg-se_dark_green gap-2'
           onClick={() => { setEditClientFormEnabled(true); setClientIdToEdit(_id); }}
         >
           edit
           <MdModeEdit />
         </button>
         <button
-          className='bg-red-700 py-1 px-2 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-red-900'
+          className='bg-red-700 py-1 px-3 h-8 flex items-center rounded-lg text-white hover:bg-red-900 gap-2'
           onClick={() => { setDeleteClientEnabled(true); setClientIdToEdit(_id); }}
         >
           delete
