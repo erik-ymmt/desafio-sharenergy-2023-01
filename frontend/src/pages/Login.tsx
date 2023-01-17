@@ -11,13 +11,14 @@ export interface ILoginInputs {
 function Login(): JSX.Element {
   const [invalidMsg, setInvalidMsg] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [randomBg, setRandomBg] = useState('bg-solar1');
 
   const navigate = useNavigate();
 
-  const randomBg = 'bg-solar' + String(Math.floor(Math.random() * 3) + 1);
-  console.log(randomBg);
-
   useEffect(() => {
+    const randomBackground = 'bg-solar' + String(Math.floor(Math.random() * 3) + 1);
+    setRandomBg(randomBackground);
+
     const loggedIn = localStorage.getItem('se_rememberme');
     if (loggedIn === 'true') navigate('/users');
   }, []);
@@ -49,7 +50,7 @@ function Login(): JSX.Element {
 
   return (
     <div className={`min-h-screen ${randomBg} bg-cover bg-no-repeat flex justify-center items-center`}>
-      <div className='bg-white/50 h-1/2 flex flex-col backdrop-blur-sm rounded-lg'>
+      <div className='bg-white/50 h-1/2 flex flex-col backdrop-blur-sm rounded-lg shadow-lg'>
         <form className='login_form flex flex-col items-center gap-4 m-14'>
           <img src="src/assets/se_logo_color.png" alt="sharenergy logo" className='h-8 mb-4 drop-shadow-xl'/>
           <input type="text" name='username' placeholder='username' className='bg-white/50 rounded-lg h-16 px-4 py-2 w-full'/>
