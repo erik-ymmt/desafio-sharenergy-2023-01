@@ -36,11 +36,11 @@ function UserCard({ user }: IUserCardProps): JSX.Element {
         <h2 className='text-se_green font-semibold text-xl'>
           {`${user.name.first}  ${user.name.last}, ${user.dob.age}`}
         </h2>
-        <h4 className='flex gap-2'>
+        <h4 className='flex gap-2 items-center text-gray-700'>
           <AiOutlineUser color='rgb(0 162 162)' />
           {user.login.username}
         </h4>
-        <h4 className='flex gap-2'>
+        <h4 className='flex gap-2 items-center text-gray-700'>
           <AiOutlineMail color='rgb(0 162 162)' />
           {user.email}
         </h4>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import UserCard, { IUser } from '../components/UserCard';
 
-import { IoMdSearch } from 'react-icons/io';
+import { IoMdSearch, IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 function Users(): JSX.Element {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ function Users(): JSX.Element {
 
   const handleSearch = async (searchedTerm: string): Promise<void> => {
     setMessage('User not found');
-    const results = 50;
+    const results = 100;
     const url = `https://randomuser.me/api/?results=${results}&seed=${seed}`;
     const response = await fetch(url);
     const result = await response.json();
@@ -69,7 +69,7 @@ function Users(): JSX.Element {
   };
 
   return (
-    <div className='bg-se_bg'>
+    <div className='bg-se_bg h-screen'>
       <Header />
       <div className='flex flex-col items-center'>
         <h2 className='mt-8 mb-4 text-2xl font-semibold text-se_green'>
@@ -98,10 +98,18 @@ function Users(): JSX.Element {
                 <UserCard key={user.login.uuid} user={user} />
               ))}
             </div>
-            <div>
-              <span onClick={goBackPage}>back</span>
-              <span>page {currPage}</span>
-              <span onClick={goNextPage}>next</span>
+            <div className='flex gap-4 justify-center'>
+              <span onClick={goBackPage} className='flex gap-2 items-center hover:underline cursor-pointer text-se_green'>
+                <IoIosArrowBack />
+                back
+              </span>
+              <span className='font-semibold text-gray-700'>
+                page {currPage}
+              </span>
+              <span onClick={goNextPage} className='flex gap-1 items-center hover:underline cursor-pointer text-se_green'>
+                next
+                <IoIosArrowForward />
+              </span>
             </div>
           </div>
           )}
