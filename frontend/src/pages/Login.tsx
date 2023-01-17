@@ -50,11 +50,11 @@ function Login(): JSX.Element {
 
   return (
     <div className={`min-h-screen ${randomBg} bg-cover bg-no-repeat flex justify-center items-center`}>
-      <div className='bg-white/50 h-1/2 flex flex-col backdrop-blur-sm rounded-lg shadow-lg'>
-        <form className='login_form flex flex-col items-center gap-4 m-14'>
-          <img src="src/assets/se_logo_color.png" alt="sharenergy logo" className='h-8 mb-4 drop-shadow-xl'/>
-          <input type="text" name='username' placeholder='username' className='bg-white/50 rounded-lg h-16 px-4 py-2 w-full'/>
-          <input type="password" name='password'placeholder='password' className='bg-white/50 rounded-lg h-16 px-4 py-2 w-full'/>
+      <div className='bg-white/50 h-1/2 flex flex-col backdrop-blur-sm rounded-lg shadow-lg max-sm:max-w-medium'>
+        <form className='login_form flex flex-col items-center gap-4 m-14 max-sm:mx-4 max-sm:my-8'>
+          <img src="src/assets/se_logo_color.png" alt="sharenergy logo" className='h-8 mb-4 drop-shadow-xl max-sm:h-4'/>
+          <input type="text" name='username' placeholder='username' className='bg-white/50 rounded-lg h-16 px-4 py-2 w-full max-lg:h-12'/>
+          <input type="password" name='password'placeholder='password' className='bg-white/50 rounded-lg h-16 px-4 py-2 w-full max-lg:h-12'/>
           <div className='flex items-center gap-2 text-gray-800'>
             <input
               type="checkbox"
@@ -65,12 +65,16 @@ function Login(): JSX.Element {
             <label htmlFor="rememberme">remember me</label>
           </div>
           <button
-            className='bg-se_green rounded-lg h-16 py-2 font-sans text-2xl text-white font-semibold w-full hover:-translate-y-0.5'
+            className='bg-se_green rounded-lg h-16 py-2 font-sans text-2xl text-white font-semibold w-full hover:-translate-y-0.5 max-lg:text-lg max-lg:h-12'
             onClick={ handleLogin }
           >Login
           </button>
           <span className={`${invalidMsg ? '' : 'hidden'} text-red-700 absolute bottom-5`}> Invalid password or username </span>
         </form>
+        {/* divs below preload backgrounds */}
+        <div className='bg-solar1'></div>
+        <div className='bg-solar2'></div>
+        <div className='bg-solar3'></div>
       </div>
     </div>
   );

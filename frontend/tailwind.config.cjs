@@ -39,7 +39,14 @@ module.exports = {
       },
       minWidth: {
         'small': '10%',
-      }
+      },
+      maxWidth: {
+        'medium': '70%',
+        'large': '90%',
+      },
+      minHeight: {
+        'small10': '10rem',
+      },
     },
   },
   plugins: [],

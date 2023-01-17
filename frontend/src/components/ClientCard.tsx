@@ -17,22 +17,22 @@ function ClientCard({
   const { _id, name, email, phoneNumber, address, cpf } = clientData;
 
   return (
-    <div className='border-gray-200 border-2 py-4 px-6 w-1/3'>
+    <div className='border-gray-200 border-2 py-4 px-6 w-1/3 max-md:w-5/6'>
       <div className='mb-4 text-base text-gray-400'>
         <p> Name:
-          <span className='text-black'>{name}</span>
+          <span className='text-black ml-2'>{name}</span>
         </p>
         <p> Email:
-          <span className='text-black'>{email}</span>
+          <span className='text-black ml-1'>{email}</span>
         </p>
         <p> Phone:
-          <span className='text-black'>{phoneNumber}</span>
+          <span className='text-black ml-1'>{phoneNumber}</span>
         </p>
         <p> Address:
-          <span className='text-black'>{address}</span>
+          <span className='text-black ml-1'>{address}</span>
         </p>
         <p>CPF:
-          <span className='text-black'>{cpf}</span>
+          <span className='text-black ml-1'>{cpf}</span>
         </p>
       </div>
       <div className='flex gap-2 justify-end'>

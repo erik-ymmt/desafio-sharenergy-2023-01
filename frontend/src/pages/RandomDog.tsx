@@ -34,9 +34,9 @@ function RandomDog(): JSX.Element {
           New Dog
           <BiRefresh />
         </button>
-        <div className='h-40 min-w-small bg-dog-loader bg-contain bg-no-repeat mxx-8'>
+        <div className='min-h-small10 min-w-small bg-dog-loader bg-contain bg-no-repeat mx-8 flex border-4 border-se_green'>
           <img
-            className='max-h-96 border-4 border-se_green'
+            className='max-h-96 min-w-small'
             src={`https://random.dog/${dogImg}`}
             alt='random dog'
           />

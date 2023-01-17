@@ -46,14 +46,14 @@ function ClientsList(): JSX.Element {
   };
 
   return (
-    <div className='bg-se_bg h-screen'>
+    <div className='bg-se_bg min-h-screen pb-10'>
       <Header />
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center min-h-full'>
         <h2 className='mt-8 mb-4 text-2xl font-semibold text-se_green'>
           ClientsList
         </h2>
 
-        <div className={`${editClientFormEnabled ? '' : 'hidden'}  absolute top-0 h-screen w-screen bg-gray-900/50 flex justify-center items-center`}>
+        <div className={`${editClientFormEnabled ? '' : 'hidden'}  absolute top-0 h-screen min-w-full bg-gray-900/50 flex justify-center items-center`}>
           <EditClientForm
             setEditClientFormEnabled={setEditClientFormEnabled}
             getClients={getClients}
@@ -62,14 +62,14 @@ function ClientsList(): JSX.Element {
           />
         </div>
 
-        <div className={`${newClientFormEnabled ? '' : 'hidden'} absolute top-0 h-screen w-screen bg-gray-900/50 flex justify-center items-center`}>
+        <div className={`${newClientFormEnabled ? '' : 'hidden'} absolute top-0 h-screen min-w-full bg-gray-900/50 flex justify-center items-center`}>
         <NewClientForm
           setNewClientFormEnabled={setNewClientFormEnabled}
           getClients={getClients}
           />
         </div>
 
-        <div className={`${deleteClientEnabled ? '' : 'hidden'} absolute top-0 h-screen w-screen bg-gray-900/50 flex justify-center items-center`}>
+        <div className={`${deleteClientEnabled ? '' : 'hidden'} absolute top-0 min-h-screen min-w-full bg-gray-900/50 flex justify-center items-center`}>
           <div className='flex flex-col justify-center items-center bg-se_bg w-1/5 rounded-lg p-4 gap-2'>
             <h3>Are you sure?</h3>
             <button
@@ -87,16 +87,16 @@ function ClientsList(): JSX.Element {
           </div>
         </div>
 
-        <form className='flex gap-2 mb-8'>
+        <form className='flex gap-2 mb-8 max-lg:flex-col max-md:w-5/6'>
           <input
-            className='rounded-lg border-se_green border-2 px-4 w-96'
+            className='rounded-lg border-se_green border-2 px-4 w-96 h-10 max-md:w-full'
             type='text'
             placeholder='Search for name, email, phone, address or cpf'
             value={searchBarText}
             onChange={({ target: { value } }) => { setSearchBarText(value); }}
           />
           <button
-          className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
+          className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green max-lg:w-full'
             onClick={(e) => { e.preventDefault(); setSearchFor(searchBarText); }}
           >
             <IoMdSearch size='100%'/>
@@ -114,7 +114,7 @@ function ClientsList(): JSX.Element {
             Add new client +
           </button>
         </form>
-        <div className='flex flex-wrap gap-4 mx-6 justify-center w-11/12'>
+        <div className='flex flex-wrap gap-4 mx-6 justify-center w-11/12 max-md:flex-col max-lg:items-center'>
           {
             (
               clientsList
