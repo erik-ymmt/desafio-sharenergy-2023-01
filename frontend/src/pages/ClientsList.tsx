@@ -42,6 +42,7 @@ function ClientsList(): JSX.Element {
   const deleteClientPopUp = async (): Promise<void> => {
     await deleteClient(clientIdToEdit);
     void getClients();
+    setDeleteClientEnabled(false);
   };
 
   return (
@@ -61,9 +62,8 @@ function ClientsList(): JSX.Element {
           />
         </div>
 
-        <div className={`${newClientFormEnabled ? '' : 'hidden'}`}>
+        <div className={`${newClientFormEnabled ? '' : 'hidden'} absolute top-0 h-screen w-screen bg-gray-900/50 flex justify-center items-center`}>
         <NewClientForm
-          newClientFormEnabled={newClientFormEnabled}
           setNewClientFormEnabled={setNewClientFormEnabled}
           getClients={getClients}
           />
@@ -101,28 +101,28 @@ function ClientsList(): JSX.Element {
             Add new client +
           </button>
         </form>
-        <div>
+        <div className='flex flex-wrap gap-4 mx-6 justify-center w-11/12'>
           {
             (
               clientsList
                 .filter((client: IClient) => (
                   client.name.toLowerCase().includes(searchFor.toLowerCase()) ||
-                client.email.toLowerCase().includes(searchFor.toLowerCase()) ||
-                client.phoneNumber.toLowerCase().includes(searchFor.toLowerCase()) ||
-                client.address.toLowerCase().includes(searchFor.toLowerCase()) ||
-                client.cpf.toLowerCase().includes(searchFor.toLowerCase())
+                  client.email.toLowerCase().includes(searchFor.toLowerCase()) ||
+                  client.phoneNumber.toLowerCase().includes(searchFor.toLowerCase()) ||
+                  client.address.toLowerCase().includes(searchFor.toLowerCase()) ||
+                  client.cpf.toLowerCase().includes(searchFor.toLowerCase())
                 ))
                 .map((client: IClient) => (
                   <ClientCard
-                      key={client._id}
-                      clientData={client}
-                      setEditClientFormEnabled={setEditClientFormEnabled}
-                      setClientIdToEdit={setClientIdToEdit}
-                      setDeleteClientEnabled={setDeleteClientEnabled}
-                      />
+                    key={client._id}
+                    clientData={client}
+                    setEditClientFormEnabled={setEditClientFormEnabled}
+                    setClientIdToEdit={setClientIdToEdit}
+                    setDeleteClientEnabled={setDeleteClientEnabled}
+                  />
                 ))
-                      )
-                    }
+            )
+          }
         </div>
       </div>
     </div>
