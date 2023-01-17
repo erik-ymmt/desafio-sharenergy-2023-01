@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         'se_green': '#00A2A2',
+        'se_bg': '#F4F7FA'
       },
       backgroundImage: {
         'solar1': "url('/src/assets/pexels-solar-panels-1.jpg')",

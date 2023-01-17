@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import UserCard, { IUser } from '../components/UserCard';
 
+import { IoMdSearch } from 'react-icons/io';
+
 function Users(): JSX.Element {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -67,36 +69,44 @@ function Users(): JSX.Element {
   };
 
   return (
-    <>
+    <div className='bg-se_bg'>
       <Header />
-      <h2>Random Users</h2>
-      <form>
-        <input
-          type="text"
-          placeholder="Search name, username or email"
-          onChange={({ target: { value } }) => { setSearchTerm(value); }}
-        />
-        <button onClick={(e) => { e.preventDefault(); void handleSearch(searchTerm); }}>
-          Search
-        </button>
-      </form>
-      {(users.length === 0)
-        ? <h3>{message}</h3>
-        : (
-        <div>
+      <div className='flex flex-col items-center'>
+        <h2 className='mt-8 mb-4 text-2xl font-semibold text-se_green'>
+          Random Users
+        </h2>
+        <form className='flex gap-4 mb-8'>
+          <input
+          className='rounded-lg border-se_green border-2 px-4 w-96'
+            type='text'
+            placeholder='Search name, username or email'
+            onChange={({ target: { value } }) => { setSearchTerm(value); }}
+          />
+          <button
+            className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg'
+            onClick={(e) => { e.preventDefault(); void handleSearch(searchTerm); }}
+          >
+            <IoMdSearch size='100%' color='white'/>
+          </button>
+        </form>
+        {(users.length === 0)
+          ? <h3>{message}</h3>
+          : (
           <div>
-            {users.map((user: IUser) => (
-              <UserCard key={user.login.uuid} user={user} />
-            ))}
+            <div>
+              {users.map((user: IUser) => (
+                <UserCard key={user.login.uuid} user={user} />
+              ))}
+            </div>
+            <div>
+              <span onClick={goBackPage}>back</span>
+              <span>page {currPage}</span>
+              <span onClick={goNextPage}>next</span>
+            </div>
           </div>
-          <div>
-            <span onClick={goBackPage}>back</span>
-            <span>page {currPage}</span>
-            <span onClick={goNextPage}>next</span>
-          </div>
-        </div>
-        )}
-    </>
+          )}
+      </div>
+    </div>
   );
 }
 
