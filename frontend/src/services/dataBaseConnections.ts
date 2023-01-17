@@ -29,6 +29,7 @@ const login = async (loginInputs: ILoginInputs): Promise<ILoginResponse> => {
 };
 
 const createClient = async (newClient: IClient): Promise<void> => {
+  const token = localStorage.getItem('se_token');
   const { name, email, phoneNumber, address, cpf } = newClient;
   const url = 'http://localhost:3001/clients';
   const options = {
@@ -36,6 +37,7 @@ const createClient = async (newClient: IClient): Promise<void> => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json;charset=UTF-8',
+      Authorization: token as string,
     },
     body: JSON.stringify({ name, email, phoneNumber, address, cpf }),
   };
@@ -43,6 +45,7 @@ const createClient = async (newClient: IClient): Promise<void> => {
 };
 
 const updateClient = async (newClient: IClient): Promise<void> => {
+  const token = localStorage.getItem('se_token');
   const { _id, name, email, phoneNumber, address, cpf } = newClient;
   const url = `http://localhost:3001/clients/${_id}`;
   const options = {
@@ -50,6 +53,7 @@ const updateClient = async (newClient: IClient): Promise<void> => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json;charset=UTF-8',
+      Authorization: token as string,
     },
     body: JSON.stringify({ name, email, phoneNumber, address, cpf }),
   };
@@ -57,12 +61,14 @@ const updateClient = async (newClient: IClient): Promise<void> => {
 };
 
 const deleteClient = async (id: string): Promise<void> => {
+  const token = localStorage.getItem('se_token');
   const url = `http://localhost:3001/clients/${id}`;
   const options = {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json;charset=UTF-8',
+      Authorization: token as string,
     },
   };
   await fetch(url, options);

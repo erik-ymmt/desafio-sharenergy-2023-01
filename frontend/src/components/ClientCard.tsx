@@ -38,14 +38,22 @@ function ClientCard({
       <div className='flex gap-2 justify-end'>
         <button
           className='bg-se_green py-1 px-5 h-8 flex items-center rounded-lg text-white hover:bg-se_dark_green gap-2'
-          onClick={() => { setEditClientFormEnabled(true); setClientIdToEdit(_id); }}
+          onClick={() => {
+            setEditClientFormEnabled(true);
+            setClientIdToEdit(_id);
+            location.href = '#';
+          }}
         >
           edit
           <MdModeEdit />
         </button>
         <button
           className='bg-red-700 py-1 px-3 h-8 flex items-center rounded-lg text-white hover:bg-red-900 gap-2'
-          onClick={() => { setDeleteClientEnabled(true); setClientIdToEdit(_id); }}
+          onClick={() => {
+            setDeleteClientEnabled(true);
+            setClientIdToEdit(_id);
+            location.href = '#';
+          }}
         >
           delete
           <BsTrashFill />

@@ -35,7 +35,6 @@ function ClientsList(): JSX.Element {
   useEffect(() => {
     const loggedIn = localStorage.getItem('se_rememberme');
     if (loggedIn !== 'true') navigate('/');
-
     void getClients();
   }, []);
 
@@ -70,7 +69,7 @@ function ClientsList(): JSX.Element {
         </div>
 
         <div className={`${deleteClientEnabled ? '' : 'hidden'} absolute top-0 min-h-screen min-w-full bg-gray-900/50 flex justify-center items-center`}>
-          <div className='flex flex-col justify-center items-center bg-se_bg w-1/5 rounded-lg p-4 gap-2'>
+          <div className='flex flex-col justify-center items-center bg-se_bg w-1/4 rounded-lg p-4 gap-2 max-lg:w-5/6'>
             <h3>Are you sure?</h3>
             <button
               className='bg-red-700 py-1 px-3 w-1/2 h-10 flex justify-center items-center rounded-lg text-white hover:bg-red-900'
@@ -109,7 +108,11 @@ function ClientsList(): JSX.Element {
           </button>
           <button
             className='bg-se_green py-1 px-2 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
-            onClick={(e) => { e.preventDefault(); setNewClientFormEnabled(true); }}
+            onClick={(e) => {
+              e.preventDefault();
+              setNewClientFormEnabled(true);
+              location.href = '#';
+            }}
           >
             Add new client +
           </button>

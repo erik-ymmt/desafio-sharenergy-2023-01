@@ -48,7 +48,7 @@ function EditClientForm({
   };
 
   return (
-    <div className='flex justify-center bg-se_bg w-1/3 rounded-lg'>
+    <div className='flex justify-center bg-se_bg w-1/3 rounded-lg max-lg:w-5/6'>
       <form className='editClient_true flex flex-col p-8 gap-4 w-10/12'>
         <label htmlFor='name'> Name:
           <input type='text' id='name' name='name' className='border-se_green border-2 w-full rounded-md py-1 px-2' />
