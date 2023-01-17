@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineUser, AiOutlineMail } from 'react-icons/ai';
 
 export interface IUser {
   name: {
@@ -25,12 +26,24 @@ interface IUserCardProps {
 
 function UserCard({ user }: IUserCardProps): JSX.Element {
   return (
-    <div>
-      <img src={user.picture.large} alt={user.name.first + user.name.last} />
+    <div className='flex items-center gap-4 mb-6'>
+      <img
+      className='rounded-full'
+        src={user.picture.large}
+        alt={user.name.first + user.name.last}
+      />
       <div>
-        <h2>{`${user.name.first}  ${user.name.last}, ${user.dob.age}`}</h2>
-        <h4>{user.login.username}</h4>
-        <h4>{user.email}</h4>
+        <h2 className='text-se_green font-semibold text-xl'>
+          {`${user.name.first}  ${user.name.last}, ${user.dob.age}`}
+        </h2>
+        <h4 className='flex gap-2'>
+          <AiOutlineUser color='rgb(0 162 162)' />
+          {user.login.username}
+        </h4>
+        <h4 className='flex gap-2'>
+          <AiOutlineMail color='rgb(0 162 162)' />
+          {user.email}
+        </h4>
       </div>
     </div>
   );
