@@ -24,6 +24,7 @@ module.exports = {
         'solar1': "url('/src/assets/pexels-solar-panels-1.jpg')",
         'solar2': "url('/src/assets/pexels-solar-panels-2.jpg')",
         'solar3': "url('/src/assets/pexels-solar-panels-3.jpg')",
+        'dog-loader': "url('/src/assets/dog_loader.png')",
       },
       fontFamily: {
         'sans': ['Roboto', "Segoe UI", "Helvetica Neue", "Arial", "Noto Sans", 'sans-serif'],
@@ -35,6 +36,9 @@ module.exports = {
         'slide-up': {
           '100%': { transform: 'translatey(-10px)' },
         }
+      },
+      minWidth: {
+        'small': '10%',
       }
     },
   },

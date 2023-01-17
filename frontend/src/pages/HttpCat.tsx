@@ -23,7 +23,7 @@ function HttpCat(): JSX.Element {
         </h2>
         <form className='flex gap-4 mb-8'>
           <input
-            className='rounded-lg border-se_green border-2 px-4 w-96'
+            className='rounded-lg border-se_green border-2 px-4 w-96 max-lg:w-full'
             type="text"
             placeholder="Type a HTTP status code e.g. 400"
             onChange={({ target: { value } }) => { setSearchBarText(value); }}
@@ -36,7 +36,7 @@ function HttpCat(): JSX.Element {
           </button>
         </form>
         <img
-          className='h-96 border-4 border-se_green'
+          className='h-96 border-4 border-se_green max-lg:w-5/6 max-lg:h-full'
           src={`https://http.cat/${statusCode}.jpg`}
           alt={`${statusCode} cat`}
         />
