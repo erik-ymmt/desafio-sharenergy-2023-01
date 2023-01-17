@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  frontend:
+    container_name: frontend
+    platform: linux/x86_64
+    build: ./frontend
+    ports:
+      - 3000:3000
+    working_dir: /frontend
+    volumes:
+      - ./frontend:/frontend
+    depends_on:
+      - backend
+    restart: 'always'
+    networks:
+      - front_sharenergy
+  backend:
+    container_name: backend
+    platform: linux/x86_64
+    build: ./backend
+    ports:
+      - 3001:3001
+    working_dir: /backend
+    volumes:
+      - ./backend:/backend
+    depends_on:
+      - db
+    environment:
+      - JWT_SECRET=sharenergy_secret_key
+      - APP_PORT=3001
+      - MONGO_URI=mongodb://db:27017/sharenergy
+    restart: 'always'
+    networks:
+      - front_sharenergy
+      - db_sharenergy
+  db:
+    image: mongo
+    container_name: db
+    platform: linux/x86_64
+    ports:
+      - 3002:27017
+    environment:
+      - MONGO_ROOT_USERNAME=root
+      - MONGO_ROOT_PASSWORD=password
+      - MONGO_DATABASE=sharenergy
+    restart: 'always'
+    networks:
+      - db_sharenergy
+
+networks:
+  front_sharenergy:
+  db_sharenergy:
