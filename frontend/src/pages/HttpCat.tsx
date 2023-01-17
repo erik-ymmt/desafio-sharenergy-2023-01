@@ -36,7 +36,7 @@ function HttpCat(): JSX.Element {
           </button>
         </form>
         <img
-          className='h-96'
+          className='h-96 border-4 border-se_green'
           src={`https://http.cat/${statusCode}.jpg`}
           alt={`${statusCode} cat`}
         />

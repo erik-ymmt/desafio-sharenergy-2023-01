@@ -44,70 +44,77 @@ function ClientsList(): JSX.Element {
   };
 
   return (
-    <>
+    <div className='bg-se_bg h-screen'>
       <Header />
-      <h2>ClientsList</h2>
+      <div className='flex flex-col items-center'>
+        <h2 className='mt-8 mb-4 text-2xl font-semibold text-se_green'>
+          ClientsList
+        </h2>
+        <div className={`${editClientFormEnabled ? '' : 'hidden'}`}>
+          <EditClientForm
+            editClientFormEnabled={editClientFormEnabled}
+            setEditClientFormEnabled={setEditClientFormEnabled}
+            getClients={getClients}
+            clientsList={clientsList}
+            clientIdToEdit={clientIdToEdit}
+          />
+        </div>
 
-      <EditClientForm
-        editClientFormEnabled={editClientFormEnabled}
-        setEditClientFormEnabled={setEditClientFormEnabled}
-        getClients={getClients}
-        clientsList={clientsList}
-        clientIdToEdit={clientIdToEdit}
-      />
+        <div className={`${newClientFormEnabled ? '' : 'hidden'}`}>
+        <NewClientForm
+          newClientFormEnabled={newClientFormEnabled}
+          setNewClientFormEnabled={setNewClientFormEnabled}
+          getClients={getClients}
+          />
+        </div>
 
-      <NewClientForm
-        newClientFormEnabled={newClientFormEnabled}
-        setNewClientFormEnabled={setNewClientFormEnabled}
-        getClients={getClients}
-      />
+        <div className={`${deleteClientEnabled ? '' : 'hidden'}`}>
+          <h3>Confirm that you want to delete</h3>
+          <button onClick={deleteClientPopUp}>Confirm</button>
+          <button onClick={() => { setDeleteClientEnabled(false); }}>Go back</button>
+        </div>
 
-      <div className={`deleteClientPopUp_${deleteClientEnabled.toString()}`}>
-        <h3>Confirm that you want to delete</h3>
-        <button onClick={deleteClientPopUp}>Confirm</button>
-        <button onClick={() => { setDeleteClientEnabled(false); }}>Go back</button>
-      </div>
-
-      <form>
-        <input
-          type='text'
-          placeholder='Search for name, email, phone, address or cpf'
-          onChange={({ target: { value } }) => { setSearchBarText(value); }}
-        />
-        <button onClick={(e) => { e.preventDefault(); setSearchFor(searchBarText); }}>
-          Search
-        </button>
-        <button onClick={(e) => { e.preventDefault(); setSearchFor(''); }}>
-          Show all clients
-        </button>
-        <button onClick={(e) => { e.preventDefault(); setNewClientFormEnabled(true); }}>
-          Add new client +
-        </button>
-      </form>
-      <div>
-        {
-          (
-            clientsList
-              .filter((client: IClient) => (
-                client.name.toLowerCase().includes(searchFor.toLowerCase()) ||
+        <form>
+          <input
+            type='text'
+            placeholder='Search for name, email, phone, address or cpf'
+            onChange={({ target: { value } }) => { setSearchBarText(value); }}
+          />
+          <button onClick={(e) => { e.preventDefault(); setSearchFor(searchBarText); }}>
+            Search
+          </button>
+          <button onClick={(e) => { e.preventDefault(); setSearchFor(''); }}>
+            Show all clients
+          </button>
+          <button onClick={(e) => { e.preventDefault(); setNewClientFormEnabled(true); }}>
+            Add new client +
+          </button>
+        </form>
+        <div>
+          {
+            (
+              clientsList
+                .filter((client: IClient) => (
+                  client.name.toLowerCase().includes(searchFor.toLowerCase()) ||
                 client.email.toLowerCase().includes(searchFor.toLowerCase()) ||
                 client.phoneNumber.toLowerCase().includes(searchFor.toLowerCase()) ||
                 client.address.toLowerCase().includes(searchFor.toLowerCase()) ||
                 client.cpf.toLowerCase().includes(searchFor.toLowerCase())
-              ))
-              .map((client: IClient) => (
+                ))
+                .map((client: IClient) => (
                   <ClientCard
-                    key={client._id}
-                    clientData={client}
-                    setEditClientFormEnabled={setEditClientFormEnabled}
-                    setClientIdToEdit={setClientIdToEdit}
-                    setDeleteClientEnabled={setDeleteClientEnabled}
-                  />
-              ))
-          )
-        }
+                      key={client._id}
+                      clientData={client}
+                      setEditClientFormEnabled={setEditClientFormEnabled}
+                      setClientIdToEdit={setClientIdToEdit}
+                      setDeleteClientEnabled={setDeleteClientEnabled}
+                      />
+                ))
+                      )
+                    }
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
