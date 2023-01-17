@@ -77,16 +77,16 @@ function Users(): JSX.Element {
         </h2>
         <form className='flex gap-4 mb-8'>
           <input
-          className='rounded-lg border-se_green border-2 px-4 w-96'
+            className='rounded-lg border-se_green border-2 px-4 w-96'
             type='text'
             placeholder='Search name, username or email'
             onChange={({ target: { value } }) => { setSearchTerm(value); }}
           />
           <button
-            className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg'
+            className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg text-white'
             onClick={(e) => { e.preventDefault(); void handleSearch(searchTerm); }}
           >
-            <IoMdSearch size='100%' color='white'/>
+            <IoMdSearch size='100%'/>
           </button>
         </form>
         {(users.length === 0)
