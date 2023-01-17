@@ -11,12 +11,17 @@ function Header(): JSX.Element {
 
   return (
     <header>
-      <div>
-        <Link to='/users'>Random Users</Link>
-        <Link to='/cats'>HTTP Cats</Link>
-        <Link to='/dogs'>Random Dog</Link>
-        <Link to='/clients'>Clients List</Link>
-        <span onClick={logout}>Logout</span>
+      <div className='h-24 bg-white shadow-md flex items-center justify-between px-16'>
+        <a href="https://www.sharenergy.com.br/" target="_blank" rel="noreferrer">
+          <img src="src/assets/se_logo_color.png" alt="sharenergy logo" className='h-8'/>
+        </a>
+        <div className='flex gap-6 justify-evenly font-semibold text-lg text-gray-500'>
+          <Link to='/users' className='hover:underline'>Random Users</Link>
+          <Link to='/cats' className='hover:underline'>HTTP Cats</Link>
+          <Link to='/dogs' className='hover:underline'>Random Dog</Link>
+          <Link to='/clients' className='hover:underline'>Clients List</Link>
+          <span onClick={logout} className='hover:underline hover:cursor-pointer'>Logout</span>
+        </div>
       </div>
     </header>
   );
