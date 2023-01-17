@@ -7,8 +7,8 @@ services:
     ports:
       - 3000:3000
     working_dir: /frontend
-    volumes:
-      - ./frontend:/frontend
+    # volumes:
+    #   - ./frontend:/frontend
     depends_on:
       - backend
     restart: 'always'
@@ -21,8 +21,8 @@ services:
     ports:
       - 3001:3001
     working_dir: /backend
-    volumes:
-      - ./backend:/backend
+    # volumes:
+    #   - ./backend:/backend
     depends_on:
       - db
     environment:
