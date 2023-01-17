@@ -29,7 +29,7 @@ function HttpCat(): JSX.Element {
             onChange={({ target: { value } }) => { setSearchBarText(value); }}
           />
           <button
-            className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg text-white'
+            className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
             onClick={(e) => { e.preventDefault(); setStatusCode(searchBarText); }}
           >
             <IoMdSearch size='100%'/>

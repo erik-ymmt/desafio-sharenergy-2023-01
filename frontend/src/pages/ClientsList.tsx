@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { IoMdSearch } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import ClientCard from '../components/ClientCard';
 import EditClientForm from '../components/EditClientForm';
@@ -74,19 +75,29 @@ function ClientsList(): JSX.Element {
           <button onClick={() => { setDeleteClientEnabled(false); }}>Go back</button>
         </div>
 
-        <form>
+        <form className='flex gap-2 mb-8'>
           <input
+            className='rounded-lg border-se_green border-2 px-4 w-96'
             type='text'
             placeholder='Search for name, email, phone, address or cpf'
             onChange={({ target: { value } }) => { setSearchBarText(value); }}
           />
-          <button onClick={(e) => { e.preventDefault(); setSearchFor(searchBarText); }}>
-            Search
+          <button
+          className='bg-se_green py-1 px-2 w-10 h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
+            onClick={(e) => { e.preventDefault(); setSearchFor(searchBarText); }}
+          >
+            <IoMdSearch size='100%'/>
           </button>
-          <button onClick={(e) => { e.preventDefault(); setSearchFor(''); }}>
+          <button
+            className='bg-se_green py-1 px-2 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
+            onClick={(e) => { e.preventDefault(); setSearchFor(''); }}
+          >
             Show all clients
           </button>
-          <button onClick={(e) => { e.preventDefault(); setNewClientFormEnabled(true); }}>
+          <button
+            className='bg-se_green py-1 px-2 w-auto h-10 flex justify-center items-center rounded-lg text-white hover:bg-se_dark_green'
+            onClick={(e) => { e.preventDefault(); setNewClientFormEnabled(true); }}
+          >
             Add new client +
           </button>
         </form>

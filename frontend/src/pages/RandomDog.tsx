@@ -28,7 +28,7 @@ function RandomDog(): JSX.Element {
           RandomDog
         </h2>
         <button
-          className='bg-se_green py-1 px-2 w-52 h-10 flex justify-center items-center rounded-lg text-white gap-2 text-lg mb-8'
+          className='bg-se_green py-1 px-2 w-52 h-10 flex justify-center items-center rounded-lg text-white gap-2 text-lg mb-8 hover:bg-se_dark_green'
           onClick={getRandomDog}
           >
           New Dog
