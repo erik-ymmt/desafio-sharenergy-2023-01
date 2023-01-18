@@ -1,6 +1,9 @@
 ## Desafio para o processo seletivo SHARENERGY 2023/01
 
 Repositório com a resolução do desafio do processo seletivo da SHARENERGY 2023/01 por Erik Yamamoto.
+<br>
+
+- Vídeo explicativo: https://youtu.be/j5326l7cdCM
 
 ## O Projeto
 <details>
