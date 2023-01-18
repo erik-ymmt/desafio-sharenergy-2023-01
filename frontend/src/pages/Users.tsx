@@ -35,7 +35,6 @@ function Users(): JSX.Element {
     if (loggedIn !== 'true') navigate('/');
 
     generateRandomSeed();
-    console.log(seedRef.current);
     void getRandomUsers(currPage);
   }, []);
 
