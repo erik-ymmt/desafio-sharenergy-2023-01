@@ -21,6 +21,11 @@ Repositório com a resolução do desafio do processo seletivo da SHARENERGY 202
   <summary><strong>Login</strong></summary>
   A tela de Login é a porta inicial da aplicação, caso o usuário não esteja logado, ele é direcionado automaticamente para essa tela. Ao clicar no botão de Login, é feita uma requisição para o backend que confere a se senha encriptografado no banco de dados está correta, caso sim, um token é gerado com o JWT.
   <img src="imgs/login_screen.gif">
+  <br>
+  Versão mobile:
+  <br>
+  <img src="imgs/login_screen_mobile-min.png" width="200">
+  <br>
   O background da tela de Login é aleatório e pode mudar a cada acesso.
   <img src="imgs/login_screen_2-min.png">
   <img src="imgs/login_screen_3-min.png">
@@ -31,6 +36,11 @@ Repositório com a resolução do desafio do processo seletivo da SHARENERGY 202
   Nessa página é feita uma requisição para uma [API externa de usuários aleatórios](https://randomuser.me/), é possível buscar por informações do usuário e procurar mais usuários ao navegar pelas páginas. Para que seja possível voltar para os mesmos usuários numa mesma navegação, o 'seed' da API é armazenado enquanto a página não é recarregada.
 
   <img src="imgs/users_screen.gif">
+  <br>
+  Versão mobile:
+  <br>
+  <img src="imgs/users_screen_mobile-min.png" width="200">
+  <br>
 </details>
 <details>
   <summary><strong>HTTP Cats</strong></summary>
@@ -38,6 +48,11 @@ Repositório com a resolução do desafio do processo seletivo da SHARENERGY 202
   Em HTTP Cats, é possível buscar por um código HTTP e, caso ele exista, a API externa [HTTP Cat](https://http.cat/) retorna uma imagem relacionada, caso não, retorna uma imagem representando o código 404.
 
   <img src="imgs/cats_screen.gif">
+  <br>
+  Versão mobile:
+  <br>
+  <img src="imgs/cats_screen_mobile-min.png" width="200">
+  <br>
 </details>
 <details>
   <summary><strong>Random Dogs</strong></summary>
@@ -45,6 +60,11 @@ Repositório com a resolução do desafio do processo seletivo da SHARENERGY 202
   Nessa página é feita uma requisição para uma [API externa de imagens de cachorros aleatórios](https://random.dog/), ao atualizar a página, um novo cachorro é retornado.
 
   <img src="imgs/dogs_screen.gif">
+  <br>
+  Versão mobile:
+  <br>
+  <img src="imgs/dogs_screen_mobile-min.png" width="200">
+  <br>
 </details>
 <details>
   <summary><strong>Clients List</strong></summary>
@@ -52,6 +72,11 @@ Repositório com a resolução do desafio do processo seletivo da SHARENERGY 202
   Na página 'Clients List', temos o frontend da lista de usuários cadastrada em nosso banco de dados mongoDB, ao iniciar a aplicação um usuário é adicionado automaticamente pelo seeder, é possível, editar e deletar usuários existente, assim como criar novos. Todas as operações do CRUD são feitas através de requisições para o o backend. OBS.: A autenticação JWT não permite criar, editar e deletar clientes com um token inválido (somente ler).
 
   <img src="imgs/clients_screen.gif">
+  <br>
+  Versão mobile:
+  <br>
+  <img src="imgs/clients_screen_mobile-min.png" width="200">
+  <br>
 </details>
 
 ## As Tecnologias
