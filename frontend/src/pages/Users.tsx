@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import UserCard, { IUser } from '../components/UserCard';
@@ -8,7 +8,7 @@ import { IoMdSearch, IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 function Users(): JSX.Element {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [seed, setSeed] = useState('');
+  const seedRef = useRef('');
   const [currPage, setCurrPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [message, setMessage] = useState('Loading...');
@@ -19,12 +19,12 @@ function Users(): JSX.Element {
     for (let i = 0; i < 6; i += 1) {
       randomString += characters.charAt(Math.floor(Math.random() * characters.length));
     }
-    setSeed(randomString);
+    seedRef.current = randomString;
   };
 
   const getRandomUsers = async (page: number, resultsPerPg = 3): Promise<void> => {
     // Random User API https://randomuser.me/documentation
-    const url = `https://randomuser.me/api/?page=${page}&results=${resultsPerPg}&seed=${seed}`;
+    const url = `https://randomuser.me/api/?page=${page}&results=${resultsPerPg}&seed=${seedRef.current}`;
     const response = await fetch(url);
     const result = await response.json();
     setUsers(result.results);
@@ -35,13 +35,14 @@ function Users(): JSX.Element {
     if (loggedIn !== 'true') navigate('/');
 
     generateRandomSeed();
+    console.log(seedRef.current);
     void getRandomUsers(currPage);
   }, []);
 
   const goBackPage = (): void => {
     if (currPage !== 1) {
       setCurrPage(currPage - 1);
-      void getRandomUsers(currPage);
+      void getRandomUsers(currPage - 1);
     }
   };
 
@@ -49,7 +50,7 @@ function Users(): JSX.Element {
     const lastPage = 20;
     if (currPage !== lastPage) {
       setCurrPage(currPage + 1);
-      void getRandomUsers(currPage);
+      void getRandomUsers(currPage + 1);
     }
   };
 
