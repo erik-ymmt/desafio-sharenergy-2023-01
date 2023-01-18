@@ -10,8 +10,8 @@ function HttpCat(): JSX.Element {
   const [statusCode, setStatusCode] = useState('100');
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('se_rememberme');
-    if (loggedIn !== 'true') navigate('/');
+    const loggedIn = localStorage.getItem('se_token');
+    if (loggedIn === null) navigate('/');
   }, []);
 
   return (
