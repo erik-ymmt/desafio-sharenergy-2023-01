@@ -12,7 +12,7 @@ Repositório com a resolução do desafio do processo seletivo da SHARENERGY 202
 
   <img src="imgs/resumo_app.jpg">
 
-  O front-end faz requisições para APIs desenvolvidas exclusivamente para o projeto e também para APIs externas. O back-end utilizou a arquitetura MSC(Model Service Controller). E, por fim, o banco de dados foi criado com 2 coleções, uma para conferir usuário e senha, e outra para os clientes.
+  O front-end faz requisições para APIs desenvolvidas exclusivamente para o projeto e também para APIs externas. A estilização foi feita de maneira responsiva. O back-end utilizou a arquitetura MSC(Model Service Controller). E, por fim, o banco de dados foi criado com 2 coleções, uma para conferir usuário e senha, e outra para os clientes.
   Como complemento, foram feitos testes de integração para o back-end. Além disso, cabe destacar que a ideia para o front-end foi realizada com o desenvolvimento de um [rascunho no Figma](https://www.figma.com/file/7ZU6ZBxlAD5gpiLxkopvj7/Sharenergy?node-id=0%3A1&t=VpuZfkhsKWJxlET7-1)
 </details>
 
