@@ -56,7 +56,7 @@ function Users(): JSX.Element {
   const handleSearch = async (searchedTerm: string): Promise<void> => {
     setMessage('User not found');
     const results = 100;
-    const url = `https://randomuser.me/api/?results=${results}&seed=${seed}`;
+    const url = `https://randomuser.me/api/?results=${results}&seed=${seedRef.current}`;
     const response = await fetch(url);
     const result = await response.json();
     const searchResults = result.results.filter((user: IUser) => (
